@@ -48,7 +48,7 @@
                 //  - 2º number by 9
                 //  - 3º number by 8
                 //  - and so on to the 9º number by 2
-                var firstDigit = (int)value[9];
+                var firstDigit = Convert.ToInt16(value[9].ToString());
                 var firstDigitVerifier = (int)0;
                 var firstDigitSum = (int)0;
 
@@ -78,7 +78,7 @@
                 //  - 2º number by 9
                 //  - 3º number by 8
                 //  - and so on to the 10º number by 2
-                var secondDigit = Convert.ToInt32(value[10]);
+                var secondDigit = Convert.ToInt16(value[10].ToString());
                 var secondDigitVerifier = (int)0;
                 var secondDigitSum = (int)0;
 
