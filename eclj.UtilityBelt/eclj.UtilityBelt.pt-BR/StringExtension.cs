@@ -12,6 +12,7 @@
         private const string isCPF_error_default = "Unknown error.";
         private const string isCPF_error_nullOrEmpty = "Value is null or empty.";
         private const string isCPF_error_notElevenCharacters = "Value does not contain eleven characters.";
+        private const string isCPF_error_knownInvalid = "Value is a known invalid CPF.";
         private const string isCPF_error_firstDigit = "The first digit of value is not equal to the first digit verifier.";
         private const string isCPF_error_secondDigit = "The second digit of value is not equal to the second digit verifier.";
 
@@ -41,6 +42,23 @@
                 if (value.Length != LENGTH_CPF)
                     throw new Exception(isCPF_error_notElevenCharacters);
 
+                #region Known Invalid Values
+                switch (value)
+                {
+                    case "00000000000":
+                    case "11111111111":
+                    case "22222222222":
+                    case "33333333333":
+                    case "44444444444":
+                    case "55555555555":
+                    case "66666666666":
+                    case "77777777777":
+                    case "88888888888":
+                    case "99999999999":
+                        throw new Exception(isCPF_error_knownInvalid);
+                }
+                #endregion
+
                 #region First Digit Validation
                 //  Consists on multipling the first nine digits
                 //  with the following formula:
@@ -54,7 +72,9 @@
 
                 for (int i = 0; i < value.Length - 2; i++)
                 {
-                    firstDigitSum = firstDigitSum + (((int)value[i]) * (i + (value.Length - i)));
+                    var valueInt = Convert.ToInt16(value[i].ToString());
+
+                    firstDigitSum = firstDigitSum + (valueInt * (value.Length - 1 - i));
                 }
 
                 //  Now we need to multiply the sum result by 10
@@ -84,7 +104,9 @@
 
                 for (int i = 0; i < value.Length - 1; i++)
                 {
-                    secondDigitSum = secondDigitSum + (((int)value[i]) * (i + (value.Length - i)));
+                    var valueInt = Convert.ToInt16(value[i].ToString());
+
+                    secondDigitSum = secondDigitSum + (valueInt * (value.Length - i));
                 }
 
                 //  Now we need to multiply the sum result by 10
