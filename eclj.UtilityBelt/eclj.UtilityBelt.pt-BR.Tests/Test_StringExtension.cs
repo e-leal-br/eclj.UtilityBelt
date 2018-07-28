@@ -25,6 +25,18 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         }
 
         [DataTestMethod]
+        [DataRow("206.abc.060-20")]
+        [DataRow("abc206.846.060-20")]
+        public void isCPF_error_invalidCharacters(string value)
+        {
+            var result = value.isCPF();
+            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
+            Assert.AreEqual(result.Value, resultText);
+        }
+
+        [DataTestMethod]
         [DataRow("000.000.000-00")]
         [DataRow("111.111.111-11")]
         [DataRow("222.222.222-22")]

@@ -10,9 +10,10 @@
 
         private const string isCPF_success = "Value is a valid CPF.";
         private const string isCPF_error_default = "Unknown error.";
+        private const string isCPF_error_knownInvalid = "Value is a known invalid CPF.";
+        private const string isCPF_error_invalidCharacters = "Value contain invalid characters.";
         private const string isCPF_error_nullOrEmpty = "Value is null or empty.";
         private const string isCPF_error_notElevenCharacters = "Value does not contain eleven characters.";
-        private const string isCPF_error_knownInvalid = "Value is a known invalid CPF.";
         private const string isCPF_error_firstDigit = "The first digit of value is not equal to the first digit verifier.";
         private const string isCPF_error_secondDigit = "The second digit of value is not equal to the second digit verifier.";
 
@@ -31,12 +32,21 @@
                 if (string.IsNullOrEmpty(value))
                     throw new Exception(isCPF_error_nullOrEmpty);
 
+                //  Get only alphanumeric characters from string
+                var valueAlphaNumeric = value.getAlphaNumericCharacters();
                 //  Get only numeric characters from string
-                value = value.getNumericCharacters();
+                var valueNumeric = value.getNumericCharacters();
 
                 //  Check if value is null or empty
-                if (string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(valueAlphaNumeric) ||
+                    string.IsNullOrEmpty(valueNumeric))
                     throw new Exception(isCPF_error_nullOrEmpty);
+
+                //  Check if value contain any characters but numbers
+                if (valueAlphaNumeric != valueNumeric)
+                    throw new Exception(isCPF_error_invalidCharacters);
+
+                value = valueNumeric;
 
                 //  Check if value has eleven characters (valid CPF)
                 if (value.Length != LENGTH_CPF)
