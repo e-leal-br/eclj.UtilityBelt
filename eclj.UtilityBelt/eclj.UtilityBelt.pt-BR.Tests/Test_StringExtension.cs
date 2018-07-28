@@ -80,14 +80,15 @@ namespace eclj.UtilityBelt.pt_BR.Tests
             Assert.AreEqual(result.Value, resultText);
         }
 
-        [TestMethod]
-        public void isCPF_error_firstDigit()
+        [DataTestMethod]
+        //[DataRow("206.846.060-20")]
+        [DataRow("206.846.060-30")]
+        //[DataRow("655.237.870-00")]
+        [DataRow("655.237.870-10")]
+        //[DataRow("336.082.320-60")]
+        [DataRow("336.082.320-70")]
+        public void isCPF_error_firstDigit(string value)
         {
-            //  Correct
-            //value = "655.237.870-00";
-            //  Wrong
-            var value = "655.237.870-90";
-
             var result = value.isCPF();
             var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
@@ -95,14 +96,15 @@ namespace eclj.UtilityBelt.pt_BR.Tests
             Assert.AreEqual(result.Value, resultText);
         }
 
-        [TestMethod]
-        public void isCPF_error_secondDigit()
+        [DataTestMethod]
+        //[DataRow("206.846.060-20")]
+        [DataRow("206.846.060-21")]
+        //[DataRow("655.237.870-00")]
+        [DataRow("655.237.870-01")]
+        //[DataRow("336.082.320-60")]
+        [DataRow("336.082.320-61")]
+        public void isCPF_error_secondDigit(string value)
         {
-            //  Correct
-            //value = "655.237.870-00";
-            //  Wrong
-            var value = "655.237.870-09";
-
             var result = value.isCPF();
             var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
@@ -153,6 +155,38 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("85.876.486/0001-")]
         [DataRow("85.876.486/0001-890000")]
         public void isCNPJ_error_notFourteenCharacters(string value)
+        {
+            var result = value.isCNPJ();
+            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
+            Assert.AreEqual(result.Value, resultText);
+        }
+
+        [DataTestMethod]
+        //[DataRow("85.876.486/0001-89")]
+        [DataRow("85.876.486/0001-99")]
+        //[DataRow("19.799.418/0001-39")]
+        [DataRow("19.799.418/0001-49")]
+        //[DataRow("18.964.930/0001-20")]
+        [DataRow("18.964.930/0001-30")]
+        public void isCNPJ_error_firstDigit(string value)
+        {
+            var result = value.isCNPJ();
+            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
+            Assert.AreEqual(result.Value, resultText);
+        }
+
+        [DataTestMethod]
+        //[DataRow("85.876.486/0001-89")]
+        [DataRow("85.876.486/0001-80")]
+        //[DataRow("19.799.418/0001-39")]
+        [DataRow("19.799.418/0001-30")]
+        //[DataRow("18.964.930/0001-20")]
+        [DataRow("18.964.930/0001-21")]
+        public void isCNPJ_error_secondDigit(string value)
         {
             var result = value.isCNPJ();
             var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
