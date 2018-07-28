@@ -110,5 +110,56 @@ namespace eclj.UtilityBelt.pt_BR.Tests
             Assert.AreEqual(result.Value, resultText);
         }
         #endregion
+
+        #region Method KeyvaluePair<bool, string> isCNPJ(this string value)
+        [DataTestMethod]
+        [DataRow("85.876.486/0001-89")]
+        [DataRow("19.799.418/0001-39")]
+        [DataRow("18.964.930/0001-20")]
+        public void isCNPJ_success(string value)
+        {
+            var result = value.isCNPJ();
+            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.IsTrue(result.Key, $"{value} should return true (returning message: '{result.Value}').");
+            Assert.AreEqual(result.Value, resultText);
+        }
+
+        [DataTestMethod]
+        [DataRow("18.964.abc/0001-20")]
+        [DataRow("abc18.964.930/0001-20")]
+        public void isCNPJ_error_invalidCharacters(string value)
+        {
+            var result = value.isCNPJ();
+            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
+            Assert.AreEqual(result.Value, resultText);
+        }
+
+        [DataTestMethod]
+        [DataRow("")]
+        [DataRow(null)]
+        public void isCNPJ_error_nullOrEmpty(string value)
+        {
+            var result = value.isCNPJ();
+            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
+            Assert.AreEqual(result.Value, resultText);
+        }
+
+        [DataTestMethod]
+        [DataRow("85.876.486/0001-")]
+        [DataRow("85.876.486/0001-890000")]
+        public void isCNPJ_error_notFourteenCharacters(string value)
+        {
+            var result = value.isCNPJ();
+            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
+
+            Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
+            Assert.AreEqual(result.Value, resultText);
+        }
+        #endregion
     }
 }

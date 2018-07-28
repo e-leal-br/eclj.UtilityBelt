@@ -143,9 +143,55 @@
             return result;
         }
 
-        public static bool isCNPJ(this string value)
+        private const string isCNPJ_success = "Value is a valid CNPJ.";
+        private const string isCNPJ_error_default = "Unknown error.";
+        private const string isCNPJ_error_invalidCharacters = "Value contain invalid characters.";
+        private const string isCNPJ_error_nullOrEmpty = "Value is null or empty.";
+        private const string isCNPJ_error_notFourteenCharacters = "Value does not contain fourteen characters.";
+
+        /// <summary>
+        /// This method validates if a string is a valid CNPJ.
+        /// </summary>
+        /// <param name="value">string to validate</param>
+        /// <returns>true if valid, false if not valid, and the following reason</returns>
+        public static KeyValuePair<bool, string> isCNPJ(this string value)
         {
-            throw new NotImplementedException();
+            var result = new KeyValuePair<bool, string>(false, isCPF_error_default);
+
+            try
+            {
+                //  Check if value is null or empty
+                if (string.IsNullOrEmpty(value))
+                    throw new Exception(isCNPJ_error_nullOrEmpty);
+
+                //  Get only alphanumeric characters from string
+                var valueAlphaNumeric = value.getAlphaNumericCharacters();
+                //  Get only numeric characters from string
+                var valueNumeric = value.getNumericCharacters();
+
+                //  Check if value is null or empty
+                if (string.IsNullOrEmpty(valueAlphaNumeric) ||
+                    string.IsNullOrEmpty(valueNumeric))
+                    throw new Exception(isCNPJ_error_nullOrEmpty);
+
+                //  Check if value contain any characters but numbers
+                if (valueAlphaNumeric != valueNumeric)
+                    throw new Exception(isCNPJ_error_invalidCharacters);
+
+                value = valueNumeric;
+
+                //  Check if value has fourteen characters (valid CNPJ)
+                if (value.Length != LENGTH_CNPJ)
+                    throw new Exception(isCNPJ_error_notFourteenCharacters);
+
+                result = new KeyValuePair<bool, string>(true, isCNPJ_success);
+            }
+            catch (Exception ex)
+            {
+                result = new KeyValuePair<bool, string>(false, ex.Message);
+            }
+
+            return result;
         }
     }
 }
