@@ -18,7 +18,7 @@
         private const string isCPF_error_secondDigit = "The second digit of value is not equal to the second digit verifier.";
 
         /// <summary>
-        /// This method validates if a string is a valid CPF.
+        /// Validates if a string is a valid CPF.
         /// </summary>
         /// <param name="value">string to validate</param>
         /// <returns>true if valid, false if not valid, and the following reason</returns>
@@ -150,7 +150,7 @@
         private const string isCNPJ_error_notFourteenCharacters = "Value does not contain fourteen characters.";
 
         /// <summary>
-        /// This method validates if a string is a valid CNPJ.
+        /// Validates if a string is a valid CNPJ.
         /// </summary>
         /// <param name="value">string to validate</param>
         /// <returns>true if valid, false if not valid, and the following reason</returns>
