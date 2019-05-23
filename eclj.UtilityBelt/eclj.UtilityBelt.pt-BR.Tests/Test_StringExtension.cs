@@ -1,10 +1,11 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
 
 namespace eclj.UtilityBelt.pt_BR.Tests
 {
+    using eclj.UtilityBelt.pt_BR.Localization;
+
     [TestClass]
     public class Test_StringExtension
     {
@@ -18,10 +19,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCPF_success(string value)
         {
             var result = value.isCPF();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsTrue(result.Key, $"{value} should return true (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCPF_success);
         }
 
         [DataTestMethod]
@@ -30,10 +30,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCPF_error_invalidCharacters(string value)
         {
             var result = value.isCPF();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCPF_error_invalidCharacters);
         }
 
         [DataTestMethod]
@@ -50,10 +49,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCPF_error_knownInvalid(string value)
         {
             var result = value.isCPF();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCPF_error_knownInvalid);
         }
 
         [DataTestMethod]
@@ -62,10 +60,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCPF_error_nullOrEmpty(string value)
         {
             var result = value.isCPF();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCPF_error_nullOrEmpty);
         }
 
         [DataTestMethod]
@@ -74,10 +71,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCPF_error_notElevenCharacters(string value)
         {
             var result = value.isCPF();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCPF_error_notElevenCharacters);
         }
 
         [DataTestMethod]
@@ -90,10 +86,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCPF_error_firstDigit(string value)
         {
             var result = value.isCPF();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCPF_error_firstDigit);
         }
 
         [DataTestMethod]
@@ -106,10 +101,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCPF_error_secondDigit(string value)
         {
             var result = value.isCPF();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCPF_error_secondDigit);
         }
         #endregion
 

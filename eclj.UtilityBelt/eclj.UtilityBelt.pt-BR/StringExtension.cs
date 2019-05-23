@@ -1,5 +1,6 @@
 ﻿namespace eclj.UtilityBelt.pt_BR
 {
+    using eclj.UtilityBelt.pt_BR.Localization;
     using System;
     using System.Collections.Generic;
 
@@ -8,15 +9,6 @@
         private const int LENGTH_CPF = 11;
         private const int LENGTH_CNPJ = 14;
 
-        private const string isCPF_success = "Value is a valid CPF.";
-        private const string isCPF_error_default = "Unknown error.";
-        private const string isCPF_error_knownInvalid = "Value is a known invalid CPF.";
-        private const string isCPF_error_invalidCharacters = "Value contain invalid characters.";
-        private const string isCPF_error_nullOrEmpty = "Value is null or empty.";
-        private const string isCPF_error_notElevenCharacters = "Value does not contain eleven characters.";
-        private const string isCPF_error_firstDigit = "The first digit of value is not equal to the first digit verifier.";
-        private const string isCPF_error_secondDigit = "The second digit of value is not equal to the second digit verifier.";
-
         /// <summary>
         /// Validates if a string is a valid CPF.
         /// </summary>
@@ -24,13 +16,13 @@
         /// <returns>true if valid, false if not valid, and the following reason</returns>
         public static KeyValuePair<bool, string> isCPF(this string value)
         {
-            var result = new KeyValuePair<bool, string>(false, isCPF_error_default);
+            var result = new KeyValuePair<bool, string>(false, Resource.isCPF_error_default);
 
             try
             {
                 //  Check if value is null or empty
                 if (string.IsNullOrEmpty(value))
-                    throw new Exception(isCPF_error_nullOrEmpty);
+                    throw new Exception(Resource.isCPF_error_nullOrEmpty);
 
                 //  Get only alphanumeric characters from string
                 var valueAlphaNumeric = value.getAlphaNumericCharacters();
@@ -40,17 +32,17 @@
                 //  Check if value is null or empty
                 if (string.IsNullOrEmpty(valueAlphaNumeric) ||
                     string.IsNullOrEmpty(valueNumeric))
-                    throw new Exception(isCPF_error_nullOrEmpty);
+                    throw new Exception(Resource.isCPF_error_nullOrEmpty);
 
                 //  Check if value contain any characters but numbers
                 if (valueAlphaNumeric != valueNumeric)
-                    throw new Exception(isCPF_error_invalidCharacters);
+                    throw new Exception();
 
                 value = valueNumeric;
 
                 //  Check if value has eleven characters (valid CPF)
                 if (value.Length != LENGTH_CPF)
-                    throw new Exception(isCPF_error_notElevenCharacters);
+                    throw new Exception(Resource.isCPF_error_notElevenCharacters);
 
                 #region Known Invalid Values
                 switch (value)
@@ -65,7 +57,7 @@
                     case "77777777777":
                     case "88888888888":
                     case "99999999999":
-                        throw new Exception(isCPF_error_knownInvalid);
+                        throw new Exception(Resource.isCPF_error_knownInvalid);
                 }
                 #endregion
 
@@ -80,26 +72,8 @@
                 var firstDigitVerifier = (int)0;
                 var firstDigitSum = (int)0;
 
-                var firstValueInt = (int)0;
-
-                firstValueInt = Convert.ToInt16(value[0].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 10);
-                firstValueInt = Convert.ToInt16(value[1].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 9);
-                firstValueInt = Convert.ToInt16(value[2].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 8);
-                firstValueInt = Convert.ToInt16(value[3].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 7);
-                firstValueInt = Convert.ToInt16(value[4].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 6);
-                firstValueInt = Convert.ToInt16(value[5].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 5);
-                firstValueInt = Convert.ToInt16(value[6].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 4);
-                firstValueInt = Convert.ToInt16(value[7].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 3);
-                firstValueInt = Convert.ToInt16(value[8].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 2);
+                for (int i = 0, multiplier = 10; multiplier <= 2; i++, multiplier--)
+                    firstDigitSum = firstDigitSum + (Convert.ToInt16(value[i].ToString()) * multiplier);
                 
                 //  Now we need to multiply the sum result by 10
                 firstDigitSum = firstDigitSum * 10;
@@ -112,7 +86,7 @@
                     firstDigitVerifier = 0;
 
                 if (firstDigit != firstDigitVerifier)
-                    throw new Exception(isCPF_error_firstDigit);
+                    throw new Exception(Resource.isCPF_error_firstDigit);
                 #endregion
 
                 #region Second Digit Validation
@@ -160,10 +134,10 @@
                     secondDigitVerifier = 0;
 
                 if (secondDigit != secondDigitVerifier)
-                    throw new Exception(isCPF_error_secondDigit);
+                    throw new Exception(Resource.isCPF_error_secondDigit);
                 #endregion
 
-                result = new KeyValuePair<bool, string>(true, isCPF_success);
+                result = new KeyValuePair<bool, string>(true, Resource.isCPF_success);
             }
             catch (Exception ex)
             {
@@ -188,7 +162,7 @@
         /// <returns>true if valid, false if not valid, and the following reason</returns>
         public static KeyValuePair<bool, string> isCNPJ(this string value)
         {
-            var result = new KeyValuePair<bool, string>(false, isCPF_error_default);
+            var result = new KeyValuePair<bool, string>(false, isCNPJ_error_default);
 
             try
             {
