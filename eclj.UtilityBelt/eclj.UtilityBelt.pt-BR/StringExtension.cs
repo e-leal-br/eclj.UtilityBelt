@@ -36,7 +36,7 @@
 
                 //  Check if value contain any characters but numbers
                 if (valueAlphaNumeric != valueNumeric)
-                    throw new Exception();
+                    throw new Exception(Resource.isCPF_error_invalidCharacters);
 
                 value = valueNumeric;
 
@@ -72,9 +72,9 @@
                 var firstDigitVerifier = (int)0;
                 var firstDigitSum = (int)0;
 
-                for (int i = 0, multiplier = 10; multiplier <= 2; i++, multiplier--)
+                for (int i = 0, multiplier = 10; multiplier >= 2; i++, multiplier--)
                     firstDigitSum = firstDigitSum + (Convert.ToInt16(value[i].ToString()) * multiplier);
-                
+
                 //  Now we need to multiply the sum result by 10
                 firstDigitSum = firstDigitSum * 10;
 
@@ -100,29 +100,9 @@
                 var secondDigitVerifier = (int)0;
                 var secondDigitSum = (int)0;
 
-                var secondfirstValueInt = (int)0;
+                for (int i = 0, multiplier = 11; multiplier >= 2; i++, multiplier--)
+                    secondDigitSum = secondDigitSum + (Convert.ToInt16(value[i].ToString()) * multiplier);
 
-                secondfirstValueInt = Convert.ToInt16(value[0].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 11);
-                secondfirstValueInt = Convert.ToInt16(value[1].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 10);
-                secondfirstValueInt = Convert.ToInt16(value[2].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 9);
-                secondfirstValueInt = Convert.ToInt16(value[3].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 8);
-                secondfirstValueInt = Convert.ToInt16(value[4].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 7);
-                secondfirstValueInt = Convert.ToInt16(value[5].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 6);
-                secondfirstValueInt = Convert.ToInt16(value[6].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 5);
-                secondfirstValueInt = Convert.ToInt16(value[7].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 4);
-                secondfirstValueInt = Convert.ToInt16(value[8].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 3);
-                secondfirstValueInt = Convert.ToInt16(value[9].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 2);
-                
                 //  Now we need to multiply the sum result by 10
                 secondDigitSum = secondDigitSum * 10;
 
@@ -147,14 +127,6 @@
             return result;
         }
 
-        private const string isCNPJ_success = "Value is a valid CNPJ.";
-        private const string isCNPJ_error_default = "Unknown error.";
-        private const string isCNPJ_error_invalidCharacters = "Value contain invalid characters.";
-        private const string isCNPJ_error_nullOrEmpty = "Value is null or empty.";
-        private const string isCNPJ_error_notFourteenCharacters = "Value does not contain fourteen characters.";
-        private const string isCNPJ_error_firstDigit = "The first digit of value is not equal to the first digit verifier.";
-        private const string isCNPJ_error_secondDigit = "The second digit of value is not equal to the second digit verifier.";
-
         /// <summary>
         /// Validates if a string is a valid CNPJ.
         /// </summary>
@@ -162,13 +134,13 @@
         /// <returns>true if valid, false if not valid, and the following reason</returns>
         public static KeyValuePair<bool, string> isCNPJ(this string value)
         {
-            var result = new KeyValuePair<bool, string>(false, isCNPJ_error_default);
+            var result = new KeyValuePair<bool, string>(false, Resource.isCNPJ_error_default);
 
             try
             {
                 //  Check if value is null or empty
                 if (string.IsNullOrEmpty(value))
-                    throw new Exception(isCNPJ_error_nullOrEmpty);
+                    throw new Exception(Resource.isCNPJ_error_nullOrEmpty);
 
                 //  Get only alphanumeric characters from string
                 var valueAlphaNumeric = value.getAlphaNumericCharacters();
@@ -178,17 +150,17 @@
                 //  Check if value is null or empty
                 if (string.IsNullOrEmpty(valueAlphaNumeric) ||
                     string.IsNullOrEmpty(valueNumeric))
-                    throw new Exception(isCNPJ_error_nullOrEmpty);
+                    throw new Exception(Resource.isCNPJ_error_nullOrEmpty);
 
                 //  Check if value contain any characters but numbers
                 if (valueAlphaNumeric != valueNumeric)
-                    throw new Exception(isCNPJ_error_invalidCharacters);
+                    throw new Exception(Resource.isCNPJ_error_invalidCharacters);
 
                 value = valueNumeric;
 
                 //  Check if value has fourteen characters (valid CNPJ)
                 if (value.Length != LENGTH_CNPJ)
-                    throw new Exception(isCNPJ_error_notFourteenCharacters);
+                    throw new Exception(Resource.isCNPJ_error_notFourteenCharacters);
 
                 #region First Digit Validation
                 //  Consists on multipling the first twelve digits
@@ -204,33 +176,12 @@
                 var firstDigitVerifier = (int)0;
                 var firstDigitSum = (int)0;
 
-                var firstValueInt = (int)0;
+                for (int i = 0, multiplier = 5; multiplier >= 2; i++, multiplier--)
+                    firstDigitSum = firstDigitSum + (Convert.ToInt16(value[i].ToString()) * multiplier);
 
-                firstValueInt = Convert.ToInt16(value[0].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 5);
-                firstValueInt = Convert.ToInt16(value[1].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 4);
-                firstValueInt = Convert.ToInt16(value[2].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 3);
-                firstValueInt = Convert.ToInt16(value[3].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 2);
-                firstValueInt = Convert.ToInt16(value[4].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 9);
-                firstValueInt = Convert.ToInt16(value[5].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 8);
-                firstValueInt = Convert.ToInt16(value[6].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 7);
-                firstValueInt = Convert.ToInt16(value[7].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 6);
-                firstValueInt = Convert.ToInt16(value[8].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 5);
-                firstValueInt = Convert.ToInt16(value[9].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 4);
-                firstValueInt = Convert.ToInt16(value[10].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 3);
-                firstValueInt = Convert.ToInt16(value[11].ToString());
-                firstDigitSum = firstDigitSum + (firstValueInt * 2);
-                
+                for (int i = 4, multiplier = 9; multiplier >= 2; i++, multiplier--)
+                    firstDigitSum = firstDigitSum + (Convert.ToInt16(value[i].ToString()) * multiplier);
+
                 //  Now we need to get the rest of the division by 11
                 firstDigitVerifier = firstDigitSum % 11;
 
@@ -242,7 +193,7 @@
                     firstDigitVerifier = 11 - firstDigitVerifier;
 
                 if (firstDigit != firstDigitVerifier)
-                    throw new Exception(isCNPJ_error_firstDigit);
+                    throw new Exception(Resource.isCNPJ_error_firstDigit);
                 #endregion
 
                 #region Second Digit Validation
@@ -260,35 +211,12 @@
                 var secondDigitVerifier = (int)0;
                 var secondDigitSum = (int)0;
 
-                var secondfirstValueInt = (int)0;
+                for (int i = 0, multiplier = 6; multiplier >= 2; i++, multiplier--)
+                    secondDigitSum = secondDigitSum + (Convert.ToInt16(value[i].ToString()) * multiplier);
 
-                secondfirstValueInt = Convert.ToInt16(value[0].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 6);
-                secondfirstValueInt = Convert.ToInt16(value[1].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 5);
-                secondfirstValueInt = Convert.ToInt16(value[2].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 4);
-                secondfirstValueInt = Convert.ToInt16(value[3].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 3);
-                secondfirstValueInt = Convert.ToInt16(value[4].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 2);
-                secondfirstValueInt = Convert.ToInt16(value[5].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 9);
-                secondfirstValueInt = Convert.ToInt16(value[6].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 8);
-                secondfirstValueInt = Convert.ToInt16(value[7].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 7);
-                secondfirstValueInt = Convert.ToInt16(value[8].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 6);
-                secondfirstValueInt = Convert.ToInt16(value[9].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 5);
-                secondfirstValueInt = Convert.ToInt16(value[10].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 4);
-                secondfirstValueInt = Convert.ToInt16(value[11].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 3);
-                secondfirstValueInt = Convert.ToInt16(value[12].ToString());
-                secondDigitSum = secondDigitSum + (secondfirstValueInt * 2);
-                
+                for (int i = 5, multiplier = 9; multiplier >= 2; i++, multiplier--)
+                    secondDigitSum = secondDigitSum + (Convert.ToInt16(value[i].ToString()) * multiplier);
+
                 //  Now we need to get the rest of the division by 11
                 secondDigitVerifier = secondDigitSum % 11;
 
@@ -300,10 +228,10 @@
                     secondDigitVerifier = 11 - secondDigitVerifier;
 
                 if (secondDigit != secondDigitVerifier)
-                    throw new Exception(isCNPJ_error_secondDigit);
+                    throw new Exception(Resource.isCNPJ_error_secondDigit);
                 #endregion
 
-                result = new KeyValuePair<bool, string>(true, isCNPJ_success);
+                result = new KeyValuePair<bool, string>(true, Resource.isCNPJ_success);
             }
             catch (Exception ex)
             {

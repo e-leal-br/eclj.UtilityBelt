@@ -22,7 +22,7 @@ namespace eclj.UtilityBelt.pt_BR.Localization {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource {
+    public class Resource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace eclj.UtilityBelt.pt_BR.Localization {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("eclj.UtilityBelt.pt-BR.Localization.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("eclj.UtilityBelt.pt_BR.Localization.Resource", typeof(Resource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace eclj.UtilityBelt.pt_BR.Localization {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,70 @@ namespace eclj.UtilityBelt.pt_BR.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Unknown error..
         /// </summary>
-        internal static string isCPF_error_default {
+        public static string isCNPJ_error_default {
+            get {
+                return ResourceManager.GetString("isCNPJ_error_default", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The first digit of value is not equal to the first digit verifier..
+        /// </summary>
+        public static string isCNPJ_error_firstDigit {
+            get {
+                return ResourceManager.GetString("isCNPJ_error_firstDigit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value contain invalid characters.
+        /// </summary>
+        public static string isCNPJ_error_invalidCharacters {
+            get {
+                return ResourceManager.GetString("isCNPJ_error_invalidCharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value does not contains fourteen characters.
+        /// </summary>
+        public static string isCNPJ_error_notFourteenCharacters {
+            get {
+                return ResourceManager.GetString("isCNPJ_error_notFourteenCharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value is null or empty..
+        /// </summary>
+        public static string isCNPJ_error_nullOrEmpty {
+            get {
+                return ResourceManager.GetString("isCNPJ_error_nullOrEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The second digit of value is not equal to the second digit verifier..
+        /// </summary>
+        public static string isCNPJ_error_secondDigit {
+            get {
+                return ResourceManager.GetString("isCNPJ_error_secondDigit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value is a valid CNPJ..
+        /// </summary>
+        public static string isCNPJ_success {
+            get {
+                return ResourceManager.GetString("isCNPJ_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown error..
+        /// </summary>
+        public static string isCPF_error_default {
             get {
                 return ResourceManager.GetString("isCPF_error_default", resourceCulture);
             }
@@ -72,7 +135,7 @@ namespace eclj.UtilityBelt.pt_BR.Localization {
         /// <summary>
         ///   Looks up a localized string similar to The first digit of value is not equal to the first digit verifier..
         /// </summary>
-        internal static string isCPF_error_firstDigit {
+        public static string isCPF_error_firstDigit {
             get {
                 return ResourceManager.GetString("isCPF_error_firstDigit", resourceCulture);
             }
@@ -81,7 +144,7 @@ namespace eclj.UtilityBelt.pt_BR.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Value contain invalid characters..
         /// </summary>
-        internal static string isCPF_error_invalidCharacters {
+        public static string isCPF_error_invalidCharacters {
             get {
                 return ResourceManager.GetString("isCPF_error_invalidCharacters", resourceCulture);
             }
@@ -90,16 +153,16 @@ namespace eclj.UtilityBelt.pt_BR.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Value is a known invalid CPF..
         /// </summary>
-        internal static string isCPF_error_knownInvalid {
+        public static string isCPF_error_knownInvalid {
             get {
                 return ResourceManager.GetString("isCPF_error_knownInvalid", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Value does not contain eleven characters..
+        ///   Looks up a localized string similar to Value does not contains eleven characters..
         /// </summary>
-        internal static string isCPF_error_notElevenCharacters {
+        public static string isCPF_error_notElevenCharacters {
             get {
                 return ResourceManager.GetString("isCPF_error_notElevenCharacters", resourceCulture);
             }
@@ -108,7 +171,7 @@ namespace eclj.UtilityBelt.pt_BR.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Value is null or empty..
         /// </summary>
-        internal static string isCPF_error_nullOrEmpty {
+        public static string isCPF_error_nullOrEmpty {
             get {
                 return ResourceManager.GetString("isCPF_error_nullOrEmpty", resourceCulture);
             }
@@ -117,7 +180,7 @@ namespace eclj.UtilityBelt.pt_BR.Localization {
         /// <summary>
         ///   Looks up a localized string similar to The second digit of value is not equal to the second digit verifier..
         /// </summary>
-        internal static string isCPF_error_secondDigit {
+        public static string isCPF_error_secondDigit {
             get {
                 return ResourceManager.GetString("isCPF_error_secondDigit", resourceCulture);
             }
@@ -126,7 +189,7 @@ namespace eclj.UtilityBelt.pt_BR.Localization {
         /// <summary>
         ///   Looks up a localized string similar to Value is a valid CPF..
         /// </summary>
-        internal static string isCPF_success {
+        public static string isCPF_success {
             get {
                 return ResourceManager.GetString("isCPF_success", resourceCulture);
             }

@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\eclj.UtilityBelt.pt-BR\eclj.UtilityBelt.pt-BR.csproj" />
+    <ProjectReference Include="..\eclj.UtilityBelt.pt-BR\eclj.UtilityBelt.pt_BR.csproj" />
   </ItemGroup>
 
 </Project>

@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="isCNPJ_error_default" xml:space="preserve">
+    <value>Unknown error.</value>
+  </data>
+  <data name="isCNPJ_error_firstDigit" xml:space="preserve">
+    <value>The first digit of value is not equal to the first digit verifier.</value>
+  </data>
+  <data name="isCNPJ_error_invalidCharacters" xml:space="preserve">
+    <value>Value contain invalid characters</value>
+  </data>
+  <data name="isCNPJ_error_notFourteenCharacters" xml:space="preserve">
+    <value>Value does not contains fourteen characters</value>
+  </data>
+  <data name="isCNPJ_error_nullOrEmpty" xml:space="preserve">
+    <value>Value is null or empty.</value>
+  </data>
+  <data name="isCNPJ_error_secondDigit" xml:space="preserve">
+    <value>The second digit of value is not equal to the second digit verifier.</value>
+  </data>
+  <data name="isCNPJ_success" xml:space="preserve">
+    <value>Value is a valid CNPJ.</value>
+  </data>
   <data name="isCPF_error_default" xml:space="preserve">
     <value>Unknown error.</value>
   </data>
@@ -130,7 +151,7 @@
     <value>Value is a known invalid CPF.</value>
   </data>
   <data name="isCPF_error_notElevenCharacters" xml:space="preserve">
-    <value>Value does not contain eleven characters.</value>
+    <value>Value does not contains eleven characters.</value>
   </data>
   <data name="isCPF_error_nullOrEmpty" xml:space="preserve">
     <value>Value is null or empty.</value>

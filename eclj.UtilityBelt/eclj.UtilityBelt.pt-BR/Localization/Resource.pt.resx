@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="isCNPJ_error_default" xml:space="preserve">
+    <value>Erro desconhecido.</value>
+  </data>
+  <data name="isCNPJ_error_firstDigit" xml:space="preserve">
+    <value>O primeiro dígito do valor não é igual ao primeiro dígito verificador.</value>
+  </data>
+  <data name="isCNPJ_error_invalidCharacters" xml:space="preserve">
+    <value>Valor contém caracteres inválidos.</value>
+  </data>
+  <data name="isCNPJ_error_notFourteenCharacters" xml:space="preserve">
+    <value>Valor não contém quatorze caracteres.</value>
+  </data>
+  <data name="isCNPJ_error_nullOrEmpty" xml:space="preserve">
+    <value>Valor é nulo ou vazio.</value>
+  </data>
+  <data name="isCNPJ_error_secondDigit" xml:space="preserve">
+    <value>O segundo dígito do valor não é igual ao segundo verificador.</value>
+  </data>
+  <data name="isCNPJ_success" xml:space="preserve">
+    <value>Valor é um CNPJ válido.</value>
+  </data>
   <data name="isCPF_error_default" xml:space="preserve">
     <value>Erro desconhecido.</value>
   </data>

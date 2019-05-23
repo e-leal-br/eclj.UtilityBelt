@@ -115,10 +115,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCNPJ_success(string value)
         {
             var result = value.isCNPJ();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsTrue(result.Key, $"{value} should return true (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCNPJ_success);
         }
 
         [DataTestMethod]
@@ -127,10 +126,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCNPJ_error_invalidCharacters(string value)
         {
             var result = value.isCNPJ();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCNPJ_error_invalidCharacters);
         }
 
         [DataTestMethod]
@@ -139,10 +137,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCNPJ_error_nullOrEmpty(string value)
         {
             var result = value.isCNPJ();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCNPJ_error_nullOrEmpty);
         }
 
         [DataTestMethod]
@@ -151,10 +148,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCNPJ_error_notFourteenCharacters(string value)
         {
             var result = value.isCNPJ();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCNPJ_error_notFourteenCharacters);
         }
 
         [DataTestMethod]
@@ -167,10 +163,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCNPJ_error_firstDigit(string value)
         {
             var result = value.isCNPJ();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCNPJ_error_firstDigit);
         }
 
         [DataTestMethod]
@@ -183,10 +178,9 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         public void isCNPJ_error_secondDigit(string value)
         {
             var result = value.isCNPJ();
-            var resultText = TYPE.GetValueFromField(Utils.GetCurrentMethod(), null, BindingFlags.NonPublic | BindingFlags.Static);
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
-            Assert.AreEqual(result.Value, resultText);
+            Assert.AreEqual(result.Value, Resource.isCNPJ_error_secondDigit);
         }
         #endregion
     }
