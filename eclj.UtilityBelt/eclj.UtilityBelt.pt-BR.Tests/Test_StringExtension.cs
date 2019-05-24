@@ -8,14 +8,12 @@ namespace eclj.UtilityBelt.pt_BR.Tests
     [TestClass]
     public class Test_StringExtension
     {
-        Type TYPE = typeof(StringExtension);
-
-        #region Method KeyvaluePair<bool, string> isCPF(this string value)
+        #region Method KeyvaluePair<bool, string> IsCPF(this string value)
         [DataTestMethod]
         [DataRow("206.846.060-20")]
         [DataRow("655.237.870-00")]
         [DataRow("336.082.320-60")]
-        public void isCPF_success(string value)
+        public void IsCPF_success(string value)
         {
             var result = value.IsCPF();
 
@@ -26,7 +24,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataTestMethod]
         [DataRow("206.abc.060-20")]
         [DataRow("abc206.846.060-20")]
-        public void isCPF_error_invalidCharacters(string value)
+        public void IsCPF_error_invalidCharacters(string value)
         {
             var result = value.IsCPF();
 
@@ -45,7 +43,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("777.777.777-77")]
         [DataRow("888.888.888-88")]
         [DataRow("999.999.999-99")]
-        public void isCPF_error_knownInvalid(string value)
+        public void IsCPF_error_knownInvalid(string value)
         {
             var result = value.IsCPF();
 
@@ -56,7 +54,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataTestMethod]
         [DataRow("")]
         [DataRow(null)]
-        public void isCPF_error_nullOrEmpty(string value)
+        public void IsCPF_error_nullOrEmpty(string value)
         {
             var result = value.IsCPF();
 
@@ -67,7 +65,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataTestMethod]
         [DataRow("655.")]
         [DataRow("655.237.870-0000000")]
-        public void isCPF_error_notElevenCharacters(string value)
+        public void IsCPF_error_notElevenCharacters(string value)
         {
             var result = value.IsCPF();
 
@@ -82,7 +80,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("655.237.870-10")]
         //[DataRow("336.082.320-60")]
         [DataRow("336.082.320-70")]
-        public void isCPF_error_firstDigit(string value)
+        public void IsCPF_error_firstDigit(string value)
         {
             var result = value.IsCPF();
 
@@ -97,7 +95,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("655.237.870-01")]
         //[DataRow("336.082.320-60")]
         [DataRow("336.082.320-61")]
-        public void isCPF_error_secondDigit(string value)
+        public void IsCPF_error_secondDigit(string value)
         {
             var result = value.IsCPF();
 
@@ -106,12 +104,12 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         }
         #endregion
 
-        #region Method KeyvaluePair<bool, string> isCNPJ(this string value)
+        #region Method KeyvaluePair<bool, string> IsCNPJ(this string value)
         [DataTestMethod]
         [DataRow("85.876.486/0001-89")]
         [DataRow("19.799.418/0001-39")]
         [DataRow("18.964.930/0001-20")]
-        public void isCNPJ_success(string value)
+        public void IsCNPJ_success(string value)
         {
             var result = value.IsCNPJ();
 
@@ -122,7 +120,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataTestMethod]
         [DataRow("18.964.abc/0001-20")]
         [DataRow("abc18.964.930/0001-20")]
-        public void isCNPJ_error_invalidCharacters(string value)
+        public void IsCNPJ_error_invalidCharacters(string value)
         {
             var result = value.IsCNPJ();
 
@@ -133,7 +131,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataTestMethod]
         [DataRow("")]
         [DataRow(null)]
-        public void isCNPJ_error_nullOrEmpty(string value)
+        public void IsCNPJ_error_nullOrEmpty(string value)
         {
             var result = value.IsCNPJ();
 
@@ -144,7 +142,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataTestMethod]
         [DataRow("85.876.486/0001-")]
         [DataRow("85.876.486/0001-890000")]
-        public void isCNPJ_error_notFourteenCharacters(string value)
+        public void IsCNPJ_error_notFourteenCharacters(string value)
         {
             var result = value.IsCNPJ();
 
@@ -159,7 +157,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("19.799.418/0001-49")]
         //[DataRow("18.964.930/0001-20")]
         [DataRow("18.964.930/0001-30")]
-        public void isCNPJ_error_firstDigit(string value)
+        public void IsCNPJ_error_firstDigit(string value)
         {
             var result = value.IsCNPJ();
 
@@ -174,7 +172,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("19.799.418/0001-30")]
         //[DataRow("18.964.930/0001-20")]
         [DataRow("18.964.930/0001-21")]
-        public void isCNPJ_error_secondDigit(string value)
+        public void IsCNPJ_error_secondDigit(string value)
         {
             var result = value.IsCNPJ();
 
