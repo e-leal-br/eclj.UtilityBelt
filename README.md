@@ -1,6 +1,9 @@
 # eclj.UtilityBelt
 A utility belt for C# language.
 
+# DateTime Extension
+- IsWeekend(): Verifies if a date is a weekend date.
+
 # String Extension
 - GetAlphaNumericCharacters(): Returns the alphanumeric (letters and numbers) characters of a string.
 
