@@ -18,7 +18,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("336.082.320-60")]
         public void isCPF_success(string value)
         {
-            var result = value.isCPF();
+            var result = value.IsCPF();
 
             Assert.IsTrue(result.Key, $"{value} should return true (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCPF_success);
@@ -29,7 +29,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("abc206.846.060-20")]
         public void isCPF_error_invalidCharacters(string value)
         {
-            var result = value.isCPF();
+            var result = value.IsCPF();
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCPF_error_invalidCharacters);
@@ -48,7 +48,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("999.999.999-99")]
         public void isCPF_error_knownInvalid(string value)
         {
-            var result = value.isCPF();
+            var result = value.IsCPF();
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCPF_error_knownInvalid);
@@ -59,7 +59,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow(null)]
         public void isCPF_error_nullOrEmpty(string value)
         {
-            var result = value.isCPF();
+            var result = value.IsCPF();
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCPF_error_nullOrEmpty);
@@ -70,7 +70,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("655.237.870-0000000")]
         public void isCPF_error_notElevenCharacters(string value)
         {
-            var result = value.isCPF();
+            var result = value.IsCPF();
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCPF_error_notElevenCharacters);
@@ -85,7 +85,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("336.082.320-70")]
         public void isCPF_error_firstDigit(string value)
         {
-            var result = value.isCPF();
+            var result = value.IsCPF();
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCPF_error_firstDigit);
@@ -100,7 +100,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("336.082.320-61")]
         public void isCPF_error_secondDigit(string value)
         {
-            var result = value.isCPF();
+            var result = value.IsCPF();
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCPF_error_secondDigit);
@@ -114,7 +114,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("18.964.930/0001-20")]
         public void isCNPJ_success(string value)
         {
-            var result = value.isCNPJ();
+            var result = value.IsCNPJ();
 
             Assert.IsTrue(result.Key, $"{value} should return true (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCNPJ_success);
@@ -125,7 +125,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("abc18.964.930/0001-20")]
         public void isCNPJ_error_invalidCharacters(string value)
         {
-            var result = value.isCNPJ();
+            var result = value.IsCNPJ();
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCNPJ_error_invalidCharacters);
@@ -136,7 +136,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow(null)]
         public void isCNPJ_error_nullOrEmpty(string value)
         {
-            var result = value.isCNPJ();
+            var result = value.IsCNPJ();
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCNPJ_error_nullOrEmpty);
@@ -147,7 +147,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("85.876.486/0001-890000")]
         public void isCNPJ_error_notFourteenCharacters(string value)
         {
-            var result = value.isCNPJ();
+            var result = value.IsCNPJ();
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCNPJ_error_notFourteenCharacters);
@@ -162,7 +162,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("18.964.930/0001-30")]
         public void isCNPJ_error_firstDigit(string value)
         {
-            var result = value.isCNPJ();
+            var result = value.IsCNPJ();
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCNPJ_error_firstDigit);
@@ -177,7 +177,7 @@ namespace eclj.UtilityBelt.pt_BR.Tests
         [DataRow("18.964.930/0001-21")]
         public void isCNPJ_error_secondDigit(string value)
         {
-            var result = value.isCNPJ();
+            var result = value.IsCNPJ();
 
             Assert.IsFalse(result.Key, $"{value} should return false (returning message: '{result.Value}').");
             Assert.AreEqual(result.Value, Resource.isCNPJ_error_secondDigit);

@@ -8,7 +8,7 @@
         /// <summary>
         /// Returns the alphanumeric (letters and numbers) characters of a string.
         /// </summary>
-        public static string getAlphaNumericCharacters(this string value)
+        public static string GetAlphaNumericCharacters(this string value)
         {
             var result = value;
 
@@ -23,7 +23,7 @@
         /// <summary>
         /// Returns the non alphanumeric (not letters and numbers) characters of a string.
         /// </summary>
-        public static string getNonAlphaNumericCharacters(this string value)
+        public static string GetNonAlphaNumericCharacters(this string value)
         {
             throw new NotImplementedException();
         }
@@ -31,7 +31,7 @@
         /// <summary>
         /// Returns the numeric (numbers) characters of a string.
         /// </summary>
-        public static string getNumericCharacters(this string value)
+        public static string GetNumericCharacters(this string value)
         {
             var result = value;
 

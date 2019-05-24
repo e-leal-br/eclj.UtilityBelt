@@ -14,7 +14,7 @@
         /// </summary>
         /// <param name="value">string to validate</param>
         /// <returns>true if valid, false if not valid, and the following reason</returns>
-        public static KeyValuePair<bool, string> isCPF(this string value)
+        public static KeyValuePair<bool, string> IsCPF(this string value)
         {
             var result = new KeyValuePair<bool, string>(false, Resource.isCPF_error_default);
 
@@ -25,9 +25,9 @@
                     throw new Exception(Resource.isCPF_error_nullOrEmpty);
 
                 //  Get only alphanumeric characters from string
-                var valueAlphaNumeric = value.getAlphaNumericCharacters();
+                var valueAlphaNumeric = value.GetAlphaNumericCharacters();
                 //  Get only numeric characters from string
-                var valueNumeric = value.getNumericCharacters();
+                var valueNumeric = value.GetNumericCharacters();
 
                 //  Check if value is null or empty
                 if (string.IsNullOrEmpty(valueAlphaNumeric) ||
@@ -132,7 +132,7 @@
         /// </summary>
         /// <param name="value">string to validate</param>
         /// <returns>true if valid, false if not valid, and the following reason</returns>
-        public static KeyValuePair<bool, string> isCNPJ(this string value)
+        public static KeyValuePair<bool, string> IsCNPJ(this string value)
         {
             var result = new KeyValuePair<bool, string>(false, Resource.isCNPJ_error_default);
 
@@ -143,9 +143,9 @@
                     throw new Exception(Resource.isCNPJ_error_nullOrEmpty);
 
                 //  Get only alphanumeric characters from string
-                var valueAlphaNumeric = value.getAlphaNumericCharacters();
+                var valueAlphaNumeric = value.GetAlphaNumericCharacters();
                 //  Get only numeric characters from string
-                var valueNumeric = value.getNumericCharacters();
+                var valueNumeric = value.GetNumericCharacters();
 
                 //  Check if value is null or empty
                 if (string.IsNullOrEmpty(valueAlphaNumeric) ||
