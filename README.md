@@ -9,7 +9,7 @@ A utility belt for C# language.
 
 - GetNumericCharacters(): Returns the numeric (numbers) characters of a string.
 
-# eclj.UtilityBelt.pt-BR
+# eclj.UtilityBelt.pt_BR
 A utility belt for C# language, focused on Brazilian utilities.
 
 # String Extension
